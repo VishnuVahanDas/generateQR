@@ -33,3 +33,5 @@ dist/
 .DS_Store
 .idea/
 .vscode/
+static/
+media/
