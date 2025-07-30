@@ -1,5 +1,5 @@
 import io
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.core.files.base import ContentFile
 from django.contrib.auth.decorators import login_required
 import qrcode
@@ -27,7 +27,7 @@ def create_qr(request):
 
 @login_required
 def qr_detail(request, pk):
-    qr_obj = QR.objects.get(pk=pk)
+    qr_obj = get_object_or_404(QR, pk=pk, user=request.user)
     return render(request, 'qr/qr_detail.html', {'qr': qr_obj})
 
 
