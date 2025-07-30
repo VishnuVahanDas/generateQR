@@ -12,10 +12,22 @@ This Django project provides a simple interface to generate a QR code for any UR
    ```bash
    python manage.py migrate
    ```
-3. Run the development server:
+3. Create an admin user (for logging in):
+   ```bash
+   python manage.py createsuperuser
+   ```
+4. Run the development server:
    ```bash
    python manage.py runserver
    ```
-4. Visit `http://localhost:8000/` to generate a QR code.
+5. Visit `http://localhost:8000/` to generate a QR code.
 
 Generated images are stored in the `media/qr_codes/` directory.
+
+## Usage
+
+* The QR creation form and history require authentication. If you are not
+  logged in you will be redirected to `/accounts/login/`. Log in using the
+  account created via `createsuperuser` before generating a QR code.
+* After logging in you can view your previous codes on the "My QR Codes" page at
+  `/mine/`.
