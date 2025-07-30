@@ -1,25 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Create QR</title>
-</head>
-<body>
-    <nav>
-        {% if user.is_authenticated %}
-            <form action="{% url 'logout' %}" method="post" style="display:inline;">
-                {% csrf_token %}
-                <button type="submit">Logout</button>
-            </form> |
-            <a href="{% url 'qr:my_qrs' %}">My QR Codes</a>
-        {% else %}
-            <a href="{% url 'login' %}">Login</a>
-        {% endif %}
-    </nav>
-    <h1>Create QR Code</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Generate</button>
-    </form>
-</body>
-</html>
+{% extends 'qr/base.html' %}
+
+{% block title %}Create QR{% endblock %}
+
+{% block content %}
+<h1>Create QR Code</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Generate</button>
+</form>
+{% endblock %}

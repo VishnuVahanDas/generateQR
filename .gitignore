@@ -34,4 +34,8 @@ dist/
 .idea/
 .vscode/
 static/
+# Allow static files in the qr app
+!qr/static/
+!qr/static/qr/
+!qr/static/qr/style.css
 media/

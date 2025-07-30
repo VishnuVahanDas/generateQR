@@ -1,21 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>QR Detail</title>
-</head>
-<body>
-    <nav>
-        {% if user.is_authenticated %}
-            <form action="{% url 'logout' %}" method="post" style="display:inline;">
-                {% csrf_token %}
-                <button type="submit">Logout</button>
-            </form> |
-            <a href="{% url 'qr:my_qrs' %}">My QR Codes</a>
-        {% else %}
-            <a href="{% url 'login' %}">Login</a>
-        {% endif %}
-    </nav>
-    <h1>{{ qr.url }}</h1>
-    <img src="{{ qr.image.url }}" alt="QR Code">
-</body>
-</html>
+{% extends 'qr/base.html' %}
+
+{% block title %}QR Detail{% endblock %}
+
+{% block content %}
+<h1>{{ qr.url }}</h1>
+<img src="{{ qr.image.url }}" alt="QR Code">
+{% endblock %}
