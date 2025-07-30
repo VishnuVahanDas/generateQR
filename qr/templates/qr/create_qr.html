@@ -4,6 +4,14 @@
     <title>Create QR</title>
 </head>
 <body>
+    <nav>
+        {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}">Logout</a> |
+            <a href="{% url 'qr:my_qrs' %}">My QR Codes</a>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+        {% endif %}
+    </nav>
     <h1>Create QR Code</h1>
     <form method="post">
         {% csrf_token %}
